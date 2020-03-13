@@ -29,6 +29,7 @@ namespace Inventory.Api
             services.AddControllers();
             services.AddTransient<IInventoryService, InventoryService>();
             services.AddSingleton<IInventoryRepository, DictionaryInventoryRepository>();
+            services.AddSingleton<IProductRepository, ListProductRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
