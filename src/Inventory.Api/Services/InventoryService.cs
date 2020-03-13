@@ -7,10 +7,12 @@ namespace Inventory.Api.Services
     public class InventoryService : IInventoryService
     {
         private readonly IInventoryRepository _inventoryRepository;
+        private readonly IProductRepository _productRepository;
 
-        public InventoryService(IInventoryRepository inventoryRepository)
+        public InventoryService(IInventoryRepository inventoryRepository, IProductRepository productRepository)
         {
             _inventoryRepository = inventoryRepository ?? throw new ArgumentNullException(nameof(inventoryRepository));
+            _productRepository = productRepository ?? throw new ArgumentNullException(nameof(productRepository));
         }
 
         public OrderResult Order(IEnumerable<OrderRow> order)
@@ -48,7 +50,14 @@ namespace Inventory.Api.Services
         {
             foreach (var row in stockRows)
             {
-                _inventoryRepository.Fill(row.ProductId, row.Amount);
+                if (_productRepository.Find(row.ProductId) != null)
+                {
+                    _inventoryRepository.Fill(row.ProductId, row.Amount);
+                }
+                else
+                {
+                    throw new InvalidOperationException($"No product with id {row.ProductId}. Can't add non-existing product to inventory");
+                }
             }
         }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Inventory.Api.Models;
 using Inventory.Api.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Inventory.Api.Controllers
@@ -34,8 +35,19 @@ namespace Inventory.Api.Controllers
         [Route("fill")]
         public IActionResult FillStock(IEnumerable<OrderRow> stockRows)
         {
-            _inventoryService.FillStock(stockRows);
-            return Ok();
+            try
+            {
+                _inventoryService.FillStock(stockRows);
+                return Ok();
+            }
+            catch (InvalidOperationException e)
+            {
+                return BadRequest(e.Message);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
         }
     }
 }
