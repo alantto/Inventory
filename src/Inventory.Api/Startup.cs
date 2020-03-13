@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -38,6 +37,8 @@ namespace Inventory.Api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.AddDefaultProducts();
+                app.AddDefaultInventory();
             }
 
             app.UseHttpsRedirection();
