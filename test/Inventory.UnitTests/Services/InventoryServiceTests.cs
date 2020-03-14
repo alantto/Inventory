@@ -3,6 +3,7 @@ using System.Linq;
 using Inventory.Api.Models;
 using Inventory.Api.Services;
 using NSubstitute;
+using NSubstitute.Core.Arguments;
 using Xunit;
 
 namespace Inventory.UnitTests.Services
@@ -22,8 +23,10 @@ namespace Inventory.UnitTests.Services
                     x[2] = 0;
                     return false;
                 });
-            
-            _sut = new InventoryService(_repository);
+
+            var productRepository = Substitute.For<IProductRepository>();
+            productRepository.Find(Arg.Any<Guid>()).Returns(new Product());
+            _sut = new InventoryService(_repository, productRepository);
         }
 
         [Fact]
