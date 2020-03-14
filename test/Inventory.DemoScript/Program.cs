@@ -86,11 +86,7 @@ namespace Inventory.DemoScript
         {
             var request = new RestRequest("inventory", Method.GET, DataFormat.Json);
             var result = client.Get(request);
-            var options = new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true,
-            };
-            var inventoryItems = JsonSerializer.Deserialize<IEnumerable<InventoryItem>>(result.Content, options);
+            var inventoryItems = Deserialize<IEnumerable<InventoryItem>>(result.Content);
             Console.WriteLine("Inventory status".ToUpper());
             Console.WriteLine("ProductID\tCount");
             foreach (var inventoryItem in inventoryItems)
@@ -104,11 +100,7 @@ namespace Inventory.DemoScript
         {
             var request = new RestRequest("product", Method.GET, DataFormat.Json);
             var result = client.Get(request);
-            var options = new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true,
-            };
-            var products = JsonSerializer.Deserialize<IEnumerable<Product>>(result.Content, options);
+            var products = Deserialize<IEnumerable<Product>>(result.Content);
             Console.WriteLine("Product list".ToUpper());
             Console.WriteLine("ProductID\tName");
             foreach (var product in products)
@@ -156,11 +148,19 @@ namespace Inventory.DemoScript
 
         static T Deserialize<T>(string json)
         {
-            var options = new JsonSerializerOptions
+            try
             {
-                PropertyNameCaseInsensitive = true,
-            };
-            return JsonSerializer.Deserialize<T>(json, options);
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true,
+                };
+                return JsonSerializer.Deserialize<T>(json, options);
+            }
+            catch (System.Exception)
+            {
+                Console.Error.WriteLine($"Error while deserializing. Value {json} to {typeof(T).FullName}");
+                throw;
+            }
         }
     }
 }
