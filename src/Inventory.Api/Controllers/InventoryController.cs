@@ -44,7 +44,7 @@ namespace Inventory.Api.Controllers
             {
                 return BadRequest(e.Message);
             }
-            catch (Exception e)
+            catch
             {
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
