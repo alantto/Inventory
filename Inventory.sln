@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{ED395A91-D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inventory.UnitTests", "test\Inventory.UnitTests\Inventory.UnitTests.csproj", "{47B6241A-C3A1-4719-B96D-60A1356CE044}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inventory.DemoScript", "test\Inventory.DemoScript\Inventory.DemoScript.csproj", "{EF7935FB-9090-45CB-8B80-E1324B070271}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,9 +50,22 @@ Global
 		{47B6241A-C3A1-4719-B96D-60A1356CE044}.Release|x64.Build.0 = Release|Any CPU
 		{47B6241A-C3A1-4719-B96D-60A1356CE044}.Release|x86.ActiveCfg = Release|Any CPU
 		{47B6241A-C3A1-4719-B96D-60A1356CE044}.Release|x86.Build.0 = Release|Any CPU
+		{EF7935FB-9090-45CB-8B80-E1324B070271}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF7935FB-9090-45CB-8B80-E1324B070271}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF7935FB-9090-45CB-8B80-E1324B070271}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{EF7935FB-9090-45CB-8B80-E1324B070271}.Debug|x64.Build.0 = Debug|Any CPU
+		{EF7935FB-9090-45CB-8B80-E1324B070271}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EF7935FB-9090-45CB-8B80-E1324B070271}.Debug|x86.Build.0 = Debug|Any CPU
+		{EF7935FB-9090-45CB-8B80-E1324B070271}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF7935FB-9090-45CB-8B80-E1324B070271}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF7935FB-9090-45CB-8B80-E1324B070271}.Release|x64.ActiveCfg = Release|Any CPU
+		{EF7935FB-9090-45CB-8B80-E1324B070271}.Release|x64.Build.0 = Release|Any CPU
+		{EF7935FB-9090-45CB-8B80-E1324B070271}.Release|x86.ActiveCfg = Release|Any CPU
+		{EF7935FB-9090-45CB-8B80-E1324B070271}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{CB550ED2-3EFD-4883-BAEE-388348A46A3B} = {2E8EB0EE-083E-4043-BC00-EE4A9AF4B898}
 		{47B6241A-C3A1-4719-B96D-60A1356CE044} = {ED395A91-DDB3-4913-A91F-D1EC38D0C66A}
+		{EF7935FB-9090-45CB-8B80-E1324B070271} = {ED395A91-DDB3-4913-A91F-D1EC38D0C66A}
 	EndGlobalSection
 EndGlobal
